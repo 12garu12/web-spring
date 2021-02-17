@@ -2,6 +2,7 @@ package com.practice.webspring.app.models.service;
 
 import com.practice.webspring.app.models.dao.ClienteRepository;
 import com.practice.webspring.app.models.entity.Cliente;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @Service
 public class ClienteServiceImpl implements IClienteService{
 
+    @Autowired
     private ClienteRepository clienteRepository;
 
     @Override
