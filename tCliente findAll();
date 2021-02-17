@@ -1,0 +1,17 @@
+[33mcommit 01d3413f37d01c8d286a7e4abf968f2f652de4a1[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: garu12 <garu12@hotmail.com>
+Date:   Tue Feb 16 21:22:37 2021 -0500
+
+    Creando el package service con la clase ClienteServiceImpl y la interface IClienteService y la interface ClienteRepository extendida de la interface CrudRepository
+
+[33mcommit f4af0e1b97dbcce987f7bf3fddd232e2462d33bd[m
+Author: garu12 <garu12@hotmail.com>
+Date:   Tue Feb 16 20:07:42 2021 -0500
+
+    Creando el package models y el subpackage entity con la clase Cliente y el subpackage dao
+
+[33mcommit dfe4bcfbfc0a95ade77e1486631e2a0c2bf9a167[m
+Author: garu12 <garu12@hotmail.com>
+Date:   Tue Feb 16 19:05:51 2021 -0500
+
+    Inicio del proyecto con toda la estructura con maven
