@@ -1,6 +1,7 @@
 package com.practice.webspring.app.models.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -16,6 +17,8 @@ import java.util.List;
 @Table(name = "clientes")
 public class Cliente implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotEmpty
@@ -35,12 +38,12 @@ public class Cliente implements Serializable {
     private Date createAt;
 
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Factura> facturas;
+    @JsonManagedReference
+    private List<Factura> facturas;
 
     public Cliente() {
-        this.facturas = new ArrayList<>();
+        facturas = new ArrayList<Factura>();
     }
-
 
 /*  Getters and Setters ***********************************************************************************************/
 
@@ -48,8 +51,6 @@ public class Cliente implements Serializable {
         this.id = id;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

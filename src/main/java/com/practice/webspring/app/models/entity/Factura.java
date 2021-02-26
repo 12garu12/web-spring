@@ -1,5 +1,6 @@
 package com.practice.webspring.app.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,7 +10,6 @@ import java.util.List;
 @Entity
 @Table(name = "facturas")
 public class Factura implements Serializable {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +24,7 @@ public class Factura implements Serializable {
     private Date createAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     private Cliente cliente;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -31,6 +32,7 @@ public class Factura implements Serializable {
     private List<ItemFactura> items;
 
     /* Constructor **************************************************************************************************/
+
     public Factura(){
         this.items = new ArrayList<>();
     }
@@ -75,7 +77,7 @@ public class Factura implements Serializable {
         this.createAt = createAt;
     }
 
-    public Cliente getCliente() {
+   public Cliente getCliente() {
         return cliente;
     }
 
@@ -98,10 +100,8 @@ public class Factura implements Serializable {
     public Double getTotal(){
         Double total = 0.0;
 
-        int size = items.size();
-
-        for (int i = 0; i < size; i++) {
-            total += items.get(i).calcularImporte();
+        for (ItemFactura item : items) {
+            total += item.calcularImporte();
         }
 
         return total;
